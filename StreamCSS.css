@@ -14,6 +14,7 @@ span {
     color: white;
     font-family: 'Josefin Sans', sans-serif;
     scroll-behavior: smooth;
+    text-transform: capitalize;
 }
 
 *::-webkit-scrollbar {
@@ -313,7 +314,6 @@ button {
     rotate: 20deg;
     animation: var(--beforestyl);
     filter: contrast(100);
-    /* border-radius: 100%; */
 }
 
 .links button:hover {
@@ -353,59 +353,131 @@ button:active {
     transition: all 0.4s ease;
 }
 
+/* middle part  */
 .mid {
-    /* position: relative; */
-    display: flex;
-    justify-content: center;
-    height: 50vh;
-    align-items: center;
-    text-align: center;
-}
-
-
-.mid-text {
-    padding: 30px 20px 100px;
     font-size: 40px;
     font-weight: 600;
-    position: absolute;
-    opacity: 0;
-    /* top: 0%; */
-    animation: midTextAn 2s ease forwards;
-    animation-timeline: scroll();
+    text-align: center;
+    padding: 10%;
 }
 
 .last-text {
-    height: 300px;
-    overflow: hidden;
+    text-align: center;
+    padding: 10%;
+}
+
+.movie-cont {
+    height: fit-content;
+    width: 100vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.movieSug {
+    height: 500px;
+    width: 95vw;
+    border-radius: 2%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-image: url(https://image.tmdb.org/t/p/w1280//8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg); */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 
 }
 
-.last-text p {
-    animation: last-text-an 1s ease forwards;
-    animation-timeline: scroll();
-    width: 90vw;
+.movieSug::before {
+    content: '';
+    height: 110%;
+    width: 110%;
+    position: absolute;
+    background: linear-gradient(to right, black 20%, rgba(0, 0, 0, 0.322) 75%, rgba(0, 0, 0, 0));
+    top: 0%;
+    left: -10px;
+}
 
+.movieDets {
+    padding: 5%;
+    height: 100%;
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    justify-content: center;
+    gap: 10px;
+    z-index: 100;
+}
+
+.movieDets h3:first-child {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.movieimg {
+    /* height: 100%; */
+    width: 45vw;
+    /* background-color: #100206; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.movieimg img {
+    max-height: 400px;
+    box-shadow: 2px 2px 100px 70px rgba(0, 0, 0, 0.566);
+}
+
+.movieDets span {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.movieDets h4:nth-child(2) {
+    margin-top: 20px;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.movieDets h4:nth-child(3) {
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.movieStsBar {
+    display: none;
+}
+
+.ranMovBtn {
+
+    border-radius: 6px;
+    background: linear-gradient(to bottom, rgba(247, 247, 247, 0.187), rgba(240, 240, 240, 0.105));
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    gap: 10px;
+    padding-left: 50px;
+    border: none;
 }
 
 .copyright {
+    margin: 30px;
+    gap: 10px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding: 30px 10px;
-    gap: 10px;
+
 }
 
 .copyright h5 {
     font-size: 13px;
-}
-
-.icons {
-    width: min-content;
-    display: flex;
-    gap: 10px;
 }
 
 @keyframes linksBtnAn {
@@ -436,52 +508,6 @@ button:active {
 
 }
 
-@keyframes stretchInOut {
-
-    from {
-        transform: scaleX(1);
-    }
-
-    50% {
-        transform: scaleX(2.01);
-        transform: scaleY(2.01);
-    }
-
-    to {
-        transform: scaleX(1);
-        transform: scaleY(1);
-    }
-}
-
-@keyframes midTextAn {
-    from {
-        opacity: 0;
-        transform: translateY(600px);
-    }
-
-    100% {
-        opacity: 1;
-        /* transform: translateY(-50px); */
-    }
-}
-
-@keyframes last-text-an {
-    from {
-        opacity: 0;
-    }
-
-    60% {
-        transform: translateY(300px);
-        opacity: 0;
-    }
-
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 @keyframes button_shine {
     from {
         opacity: .9;
@@ -491,5 +517,93 @@ button:active {
     to {
         opacity: 1;
         left: 400px;
+    }
+}
+
+@media (max-width : 1029px) {
+
+    .movieDets h3:first-child {
+        font-size: 25px;
+    }
+}
+
+@media (max-width : 992px) {
+    .movieSug {
+        scale: 0.9;
+    }
+
+    .movie-cont {
+        scale: 0.9;
+    }
+
+}
+
+@media (max-width : 800px) {
+    .movie-cont {
+        scale: 0.9;
+    }
+
+    .movieSug {
+        height: 400px;
+    }
+
+    .movieimg img {
+        max-height: 300px;
+
+    }
+
+    .movieDets {
+        scale: 0.8;
+    }
+
+}
+
+@media (max-width : 637px) {
+    .movieSug {
+        background-position: right;
+        padding: 5%;
+        scale: 1;
+        width: 90vw;
+    }
+
+    .movie-cont {
+        width: 90vw;
+        padding: 5%;
+        scale: 1;
+    }
+
+    .movieDets {
+        display: none;
+    }
+
+    .movieStsBar {
+        display: block;
+        border-radius: 6%;
+    }
+
+    .movieDets-mini {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        width: 80%;
+        left: 50px;
+        transform: translate(-35px, -120px);
+
+    }
+
+    .movieSug::before {
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background: linear-gradient(to top, black 20%, rgba(0, 0, 0, 0.322) 75%, rgba(0, 0, 0, 0));
+        top: 10%;
+        left: 0px;
+    }
+
+    .movieimg img {
+        transform: translate(75px, -40px);
+
     }
 }
