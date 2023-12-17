@@ -1,3 +1,49 @@
+//jaldi yeha se hato
+// (c) lord krishna (c) biisal
+
+async function getDets() {
+    let randPage = Math.floor(1 + Math.random() * 100)
+
+    const apiKey = '6abcb6bb99fb77f33c37016a28866ed2';
+    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=hin-US&page=${randPage}`;
+
+    let movieCont = document.querySelector('.movieSug')
+    let img = document.querySelector('.movieimg img')
+    let movieDets = document.querySelector('.movieDets')
+    let movieDetsMini = document.querySelector('.movieDets-mini')
+
+    let data = await fetch(apiUrl)
+    let resData = await data.json()
+    let ranIndex = Math.floor(Math.random() * resData.results.length)
+    let movie = resData.results[ranIndex]
+    console.log(movie.overview.length);
+    movieDets.innerHTML = `
+    <h3>Must-see blockbuster film!</h3>
+    <h4><span>Title:</span> ${movie.title}</h4>
+                        <h4><span>movie overview:</span> ${movie.overview}</h4>
+                        <h4><span>Release Date:</span> ${movie.release_date}</h4>
+                        <h4><span>Vote Average:</span> ${movie.vote_average}</h4>
+    `
+    movieDetsMini.innerHTML = `
+                <h3><span>Title:</span> ${movie.title}</h3>
+                <h3><span>Release Date:</span> ${movie.release_date}</h3>
+                <h3><span>Vote Average:</span> ${movie.vote_average}</h3>
+        `
+
+
+    img.src = `https://image.tmdb.org/t/p/w1280/${movie.poster_path}`
+    movieCont.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1280/${movie.backdrop_path})`
+        ;
+
+}
+window.addEventListener("load", getDets())
+
+
+
+
+
+
+
 let homeBtn = document.querySelector(".home-btn")
 let abtBtn = document.querySelector(".about-btn")
 let dldBtn_outer = document.querySelector(".downloadBtn")
