@@ -5,8 +5,7 @@ async function getDets() {
     let randPage = Math.floor(1 + Math.random() * 100)
 
     const apiKey = '6abcb6bb99fb77f33c37016a28866ed2';
-    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=hin-US&page=${randPage}`;
-
+    let apiUrl = `https://api.themoviedb.org/3/${randPage % 2 === 0 ? 'movie/popular' : 'trending/movie/day'}?api_key=${apiKey}&language=hin-US&page=${randPage}`
     let movieCont = document.querySelector('.movieSug')
     let img = document.querySelector('.movieimg img')
     let movieDets = document.querySelector('.movieDets')
@@ -16,7 +15,6 @@ async function getDets() {
     let resData = await data.json()
     let ranIndex = Math.floor(Math.random() * resData.results.length)
     let movie = resData.results[ranIndex]
-    console.log(movie.overview.length);
     movieDets.innerHTML = `
     <h3>Must-see blockbuster film!</h3>
     <h4><span>Title:</span> ${movie.title}</h4>
