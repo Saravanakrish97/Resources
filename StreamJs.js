@@ -3,14 +3,14 @@
 
 async function getDets() {
     let randPage = Math.floor(1 + Math.random() * 100)
-
     const apiKey = '6abcb6bb99fb77f33c37016a28866ed2';
-    let apiUrl = `https://api.themoviedb.org/3/${randPage % 2 === 0 ? 'movie/popular' : 'trending/movie/day'}?api_key=${apiKey}&language=hin-US&page=${randPage}`
+    let apiArr = [`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=hin-US&page=${randPage}`, `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&language=hin-US&page=${randPage}`, `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=hin-US&page=${randPage}`]
+    let ArrRanIndex = Math.floor(Math.random() * apiArr.length)
+    let apiUrl = apiArr[ArrRanIndex]
     let movieCont = document.querySelector('.movieSug')
     let img = document.querySelector('.movieimg img')
     let movieDets = document.querySelector('.movieDets')
     let movieDetsMini = document.querySelector('.movieDets-mini')
-
     let data = await fetch(apiUrl)
     let resData = await data.json()
     let ranIndex = Math.floor(Math.random() * resData.results.length)
@@ -27,20 +27,10 @@ async function getDets() {
                 <h3><span>Release Date:</span> ${movie.release_date}</h3>
                 <h3><span>Vote Average:</span> ${movie.vote_average}</h3>
         `
-
-
     img.src = `https://image.tmdb.org/t/p/w1280/${movie.poster_path}`
-    movieCont.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1280/${movie.backdrop_path})`
-        ;
-
+    movieCont.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1280/${movie.backdrop_path})`;
 }
 window.addEventListener("load", getDets())
-
-
-
-
-
-
 
 let homeBtn = document.querySelector(".home-btn")
 let abtBtn = document.querySelector(".about-btn")
@@ -56,13 +46,11 @@ let abt_chnl = document.querySelector('.abt-chnl')
 let contact = document.querySelectorAll('.contact a')
 let footer = document.querySelector('footer')
 
-
 let timer = 0
 
 if (document.getElementById("heading").classList.contains("title")) {
     document.querySelector(".title").textContent = 'BISAL FILES'
 }
-
 
 // adding under in home btn at first 
 homeBtn.classList.add('active');
@@ -89,7 +77,6 @@ homeBtn.addEventListener("click", () => {
     about_nav.style.display = "none"
 
 })
-
 
 abt_chnl.addEventListener("click", () => {
     timer = 1
