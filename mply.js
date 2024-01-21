@@ -369,7 +369,7 @@ function km_player() {
 function hd_player() {
   let interval = setInterval(() => {
     ad_show.style.display = "flex";
-    ad_show_p.innerText = `The link will be shown in ${timer2} seconds`;
+    ad_show_p.innerHTML = `The link will be shown in <span>${timer2}</span> seconds`;
     timer2--;
   }, 1000); // Adjusted interval to 1000 milliseconds (1 second)
 
