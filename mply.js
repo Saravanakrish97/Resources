@@ -399,3 +399,19 @@ function bisalDownload() {
     timer2 = 5;
   }, 6000);
 }
+
+function showDes() {
+  let innerDes = document.querySelector(".Disclaimer-inner");
+  let currentDisplay = window
+    .getComputedStyle(innerDes)
+    .getPropertyValue("display");
+  let btn = document.querySelector(".Disclaimer button");
+
+  if (currentDisplay === "block") {
+    innerDes.style.display = "none";
+    btn.textContent = "🔻";
+  } else {
+    innerDes.style.display = "block";
+    btn.textContent = "🔺";
+  }
+}
