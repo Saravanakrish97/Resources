@@ -677,7 +677,7 @@ align-items: center;
 text-transform: uppercase;
 font-family: var(--gilroy);
 font-weight: 600;
-color: var(--mycol);
+color: rgb(0, 255, 128);
 }
 
 .report {
@@ -691,7 +691,7 @@ margin-top: 20px;
 }
 
 .report a {
-color: var(--mycol);
+color: rgb(0, 255, 128);
 }
 
 .report span {
