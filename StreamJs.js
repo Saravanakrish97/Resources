@@ -49,7 +49,7 @@ let footer = document.querySelector('footer')
 let timer = 0
 
 if (document.getElementById("heading").classList.contains("title")) {
-    document.querySelector(".title").textContent = 'BISAL FILES'
+    document.querySelector(".title").textContent = 'TAMILMOVIES4K'
 }
 
 // adding under in home btn at first 
